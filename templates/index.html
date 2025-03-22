@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Recommender System</title>
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  >
+  <style>
+    body {
+      background-color: #1c1c1c;
+      color: #f8f9fa;
+    }
+    .navbar {
+      background-color: #343a40;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.6rem;
+      color: #f8f9fa !important;
+    }
+    .nav-link {
+      color: #f8f9fa !important;
+      font-size: 1rem;
+    }
+    .section-title {
+      text-align: center;
+      margin: 30px 0 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #f8f9fa;
+    }
+    .card {
+      background-color: #2a2a2a;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      color: #f8f9fa;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .card-text {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-footer {
+      background-color: #2a2a2a;
+      border-top: none;
+    }
+    .text-muted {
+      color: #ccc !important;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">Book Recommender System</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <!-- Recommend link takes you to the recommendation page -->
+          <li class="nav-item">
+            <a class="nav-link" href="/recommend">Recommend</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Top 50 Books -->
+  <div class="container">
+    <h1 class="section-title">Top 50 Books</h1>
+    <div class="row">
+      {% for i in range(book_name|length) %}
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+        <div class="card flex-fill">
+          <img src="{{ image[i] }}" class="card-img-top" alt="Book Cover">
+          <div class="card-body">
+            <h5 class="card-title">{{ book_name[i] }}</h5>
+            <p class="card-text">By: {{ author[i] }}</p>
+          </div>
+          <div class="card-footer">
+            <!-- Ratings and votes on separate lines -->
+            <small class="text-muted">Rating: {{ ratings[i] }}</small><br>
+            <small class="text-muted">Votes: {{ votes[i] }}</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (optional) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+</body>
+</html>
