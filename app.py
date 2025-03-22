@@ -34,7 +34,7 @@ def recommend_books():
     user_input_raw = request.form.get("book_name", "")
     # For matching logic, use a stripped and lowercased version
     user_input = user_input_raw.strip().lower()
-    
+
     # Normalize the pivot table index by stripping and converting to lowercase
     pt_index_lower = [str(title).strip().lower() for title in pt.index]
 
@@ -73,9 +73,9 @@ def recommend_books():
             details['Book-Author'],
             details['Image-URL-M']
         ))
-    
+
     # Pass user_input_raw so the text remains in the search box
     return render_template("recommend.html", recommendations=recommendations, user_input=user_input_raw)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
